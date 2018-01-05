@@ -138,123 +138,55 @@
         <div class="l-divider l-divider--big"></div>
         <h3>Active Listings</h3>
         <div class="c-content__property c-content__property--related">
-            <div class="c-content__property-item">
-                <a href="#">
-                    <div class="c-content__property-main">
-                        <div class="c-content__property-image">
-                            <img src="~/images/home1.jpg" alt="">
-                        </div>
-                        <div class="c-content__property-price h-clearfix">
-                            <div class="c-content__property-price-current">
-                                $345,000
+            @foreach (var item in Model.ActiveListing)
+            {
+
+                <div class="c-content__property-item">
+                    <a href="#">
+                        <div class="c-content__property-main">
+                            <div class="c-content__property-image">
+                                <img src="@item.Image" alt="">
                             </div>
-                            <div class="c-content__property-price-changes c-content__property-price-changes--up">
-                                <span class="value">6,5</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-content__property-desc">
-                        <div class="c-content__property-info h-clearfix">
-                            <div class="c-content__property-address">
-                                472 Ponderosa Dr, Alpine
-                            </div>
-                            <div class="c-content__property-photos">
-                                <span>×</span> 12
-                            </div>
-                        </div>
-                        <div class="c-content__property-features h-clearfix">
-                            <div class="c-content__property-feature c-content__property-feature--beds">
-                                4
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--bath">
-                                3.0
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--sqft">
-                                2,785
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="c-content__property-favorite"></div>
-            </div>
-            <div class="c-content__property-item is-favorite">
-                <a href="#">
-                    <div class="c-content__property-main">
-                        <div class="c-content__property-image">
-                            <img src="~/images/home8.jpg" alt="">
-                        </div>
-                        <div class="c-content__property-price h-clearfix">
-                            <div class="c-content__property-price-current">
-                                $345,000
-                            </div>
-                            <div class="c-content__property-price-changes c-content__property-price-changes--down">
-                                <span class="value">10</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-content__property-desc">
-                        <div class="c-content__property-info h-clearfix">
-                            <div class="c-content__property-address">
-                                472 Ponderosa Dr, Alpine
-                            </div>
-                            <div class="c-content__property-photos">
-                                <span>×</span> 12
-                            </div>
-                        </div>
-                        <div class="c-content__property-features h-clearfix">
-                            <div class="c-content__property-feature c-content__property-feature--beds">
-                                4
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--bath">
-                                3.0
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--sqft">
-                                2,785
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="c-content__property-favorite"></div>
-            </div>
-            <div class="c-content__property-item">
-                <a href="#">
-                    <div class="c-content__property-main">
-                        <div class="c-content__property-image">
-                            <img src="~/images/home11.jpg" alt="">
-                        </div>
-                        <div class="c-content__property-price h-clearfix">
-                            <div class="c-content__property-price-current">
-                                $345,000
-                            </div>
-                            <div class="c-content__property-price-changes c-content__property-price-changes--none">
+                            <div class="c-content__property-price h-clearfix">
+                                <div class="c-content__property-price-current">
+                                    @item.Value
+                                </div>
+                                @if (item.pricecange > 0)
+                                {
+                                    <div class="c-content__property-price-changes c-content__property-price-changes--up">
+                                        <span class="value">@item.pricecange.ToString("F1")</span>
+                                    </div>
+                                }
 
                             </div>
                         </div>
-                    </div>
-                    <div class="c-content__property-desc">
-                        <div class="c-content__property-info h-clearfix">
-                            <div class="c-content__property-address">
-                                472 Ponderosa Dr, Alpine
+                        <div class="c-content__property-desc">
+                            <div class="c-content__property-info h-clearfix">
+                                <div class="c-content__property-address">
+                                    @item.Name
+                                </div>
+                                <div class="c-content__property-photos">
+                                    <span>×</span> 12
+                                </div>
                             </div>
-                            <div class="c-content__property-photos">
-                                <span>×</span> 12
+                            <div class="c-content__property-features h-clearfix">
+                                <div class="c-content__property-feature c-content__property-feature--beds">
+                                    @item.Bed
+                                </div>
+                                <div class="c-content__property-feature c-content__property-feature--bath">
+                                    @item.Bath.ToString("0.00")
+                                </div>
+                                <div class="c-content__property-feature c-content__property-feature--sqft">
+                                    @item.Sqft.ToString("N0")
+                                </div>
                             </div>
                         </div>
-                        <div class="c-content__property-features h-clearfix">
-                            <div class="c-content__property-feature c-content__property-feature--beds">
-                                4
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--bath">
-                                3.0
-                            </div>
-                            <div class="c-content__property-feature c-content__property-feature--sqft">
-                                2,785
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="c-content__property-favorite"></div>
-            </div>
+                    </a>
+                    <div class="c-content__property-favorite"></div>
+                </div>
+
+            }
+
         </div>
         <div class="l-row l-row--center">
             <a class="l-btn l-btn-more l-btn-more--arrow-changeable" href="#"><span class="h-hide-on-mobile">See </span>More</a>

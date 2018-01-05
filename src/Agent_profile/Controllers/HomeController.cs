@@ -39,7 +39,7 @@ namespace Agent_profile.Controllers
             AgentReview = GetAgentReview(comment, Reviews);
             AgentProfile.Review.Add(AgentReview);
 
-
+            AgentProfile.ActiveListing = GetActiveList();
             AgentProfile.Agent = Agent;
             AgentProfile.AvgReview = 4.5M;
 
@@ -92,6 +92,33 @@ namespace Agent_profile.Controllers
             AgentReview.ReviewFrom = "Bought a home in 2017 in El Cajon, CA";
 
             return AgentReview;
+        }
+
+        private List<ActiveListingModel> GetActiveList()
+        {
+            var ActiveList = new List<ActiveListingModel>();
+            ActiveList.Add(GetProperty(345000M, "472 Ponderosa Dr, Alpine", 4, 3.0M, 2785, false, "/images/home1.jpg", 6.5M));
+            ActiveList.Add(GetProperty(345000M, "472 Ponderosa Dr, Alpine", 4, 3.0M, 2785, true, "/images/home8.jpg", 10));
+            ActiveList.Add(GetProperty(345000M, "472 Ponderosa Dr, Alpine", 4, 3.0M, 2785, false, "/images/home11.jpg", 0));
+
+            return ActiveList;
+        }
+
+        private ActiveListingModel GetProperty(decimal value, string Description, int Bed, decimal bath, long SQFT, bool isFavorit, string img, decimal pricechange)
+        {
+            var property = new ActiveListingModel()
+            {
+                Value = value,
+                Name = Description,
+                Bath = bath,
+                Bed = Bed,
+                Sqft = SQFT,
+                IsFavariot = isFavorit,
+                Image = img,
+                pricecange = pricechange
+            };
+
+            return property;
         }
     }
 }
