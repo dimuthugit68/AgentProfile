@@ -10,11 +10,13 @@ namespace Agent_profile.ViewModels
     {
         public AgentVM()
         {
-            Review = new List<ReviewModel>();
+            Review = new List<AgentReviewVM>();
             Sort = new List<SortList>();
+            Agent = new AgentModel();
+            PastSale = new PastSaleVM();
         }
         public AgentModel Agent { get; set; }
-        public List<ReviewModel> Review { get; set; }
+        public List<AgentReviewVM> Review { get; set; }
         public decimal AvgReview { get; set; }
         public List<ActiveListingModel> ActiveListing { get; set; }
         public PastSaleVM PastSale { get; set; }

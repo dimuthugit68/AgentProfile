@@ -9,6 +9,6 @@ namespace Agent_profile.Models
     {
         public long Id { get; set; }
         public string Description { get; set; }
-        public AgentModel Agent { get; set; }
+        public decimal Review { get; set; }
     }
 }

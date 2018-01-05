@@ -15,6 +15,6 @@ namespace Agent_profile.Models
         public decimal Value { get; set; }
         public int Bed { get; set; }
         public decimal Bath { get; set; }
-        public long SQFT { get; set; }
+        public long Sqft { get; set; }
     }
 }
